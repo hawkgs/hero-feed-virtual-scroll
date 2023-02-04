@@ -1,0 +1,25 @@
+header {
+  background-color: #004d9a;
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  padding: 20px;
+  box-sizing: border-box;
+  height: 64px;
+
+  h1 {
+    margin: 0;
+  }
+}
+
+section {
+  position: relative;
+  border: 2px solid #d56262;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  section {
+    max-width: 640px;
+    margin-top: 6px;
+  }
+}
