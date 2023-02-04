@@ -10,6 +10,9 @@ export class HeroMessageComponent {
   @Input() message!: HeroMessage;
 
   get initials() {
-    return this.message.name.split(' ').map((name: string) => name[0]);
+    return this.message.name
+      .split(' ')
+      .map((name: string) => name[0])
+      .join('');
   }
 }

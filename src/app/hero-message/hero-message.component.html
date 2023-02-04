@@ -1,9 +1,9 @@
 <div class="sidebar">
-  <div class="sidebar">{{ initials }}</div>
+  <div class="icon">{{ initials }}</div>
 </div>
 <div class="content">
   <p class="name">{{ message.name }}</p>
-  <p class="date">{{ message.date | date: 'dd MMM yyyy' }}</p>
+  <p class="date">{{ message.date | date : 'dd MMM yyyy' }}</p>
   <p class="message">{{ message.message }}</p>
   <div *ngIf="message.tags.length" class="tags">
     <span *ngFor="let t of message.tags" class="tag">{{ t }}</span>
