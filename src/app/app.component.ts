@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ApiService } from './api/api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hero-feed';
+
+  constructor(private _api: ApiService) {
+    this._api.getHeroMessages$(20)
+      .subscribe((p) => console.log(p));
+  }
 }
