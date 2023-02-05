@@ -1,6 +1,6 @@
 export interface HeroMessage {
   name: string;
   date: Date;
-  message: string;
+  text: string;
   tags: string[];
 }

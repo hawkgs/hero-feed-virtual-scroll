@@ -29,7 +29,7 @@ export const generateMessages = (size: number): HeroMessage[] => {
         separator: ' ',
       }),
       date: new Date(randomNum(2015, 2023), randomNum(0, 11), randomNum(1, 30)),
-      message: lorem.generateSentences(1),
+      text: lorem.generateSentences(1),
       tags: new Array(randomNum(0, 1) ? randomNum(0, 5) : 0)
         .fill(null)
         .map(() => uniqueNamesGenerator({ dictionaries: [colors], length: 1 })),

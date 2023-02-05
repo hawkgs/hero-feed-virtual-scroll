@@ -11,7 +11,7 @@ export class HeroMessagesService {
 
   loadMessages() {
     this._api
-      .getHeroMessages$()
+      .getHeroMessages$(100)
       .pipe(withLatestFrom(this.messages$), take(1))
       .subscribe(([apiMsgs, stateMsgs]) => {
         this.messages$.next([...stateMsgs, ...apiMsgs]);

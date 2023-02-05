@@ -20,6 +20,7 @@ header {
   margin: 0 auto;
   height: calc(100vh - $headerHeight);
   box-sizing: border-box;
+  overflow-y: scroll;
 }
 
 @media (min-width: 420px) {

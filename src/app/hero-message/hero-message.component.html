@@ -4,7 +4,7 @@
 <div class="content">
   <p class="name">{{ message.name }}</p>
   <p class="date">{{ message.date | date : 'dd MMM yyyy' }}</p>
-  <p class="message">{{ message.message }}</p>
+  <p class="message">{{ message.text }}</p>
   <div *ngIf="message.tags.length" class="tags">
     <div *ngFor="let t of message.tags" class="tag">{{ t }}</div>
   </div>
