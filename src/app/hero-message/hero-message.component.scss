@@ -1,18 +1,58 @@
 :host {
   display: flex;
-  border: 1px solid red;
+  font-size: 14px;
+  padding: 24px;
+  border-bottom: 1px solid #e2e2e2;
 
   .sidebar {
+    margin-right: 16px;
+
     .icon {
       width: 40px;
       height: 40px;
       text-align: center;
       box-sizing: border-box;
       border-radius: 50%;
+      color: #fff;
+      text-shadow: 0 1px 0 #000, 0 -1px 0 #000, 1px 0 0 #000, -1px 0 0 #000;
+      text-align: center;
+      padding: 12px 0;
     }
   }
 
   .content {
     flex: 1;
+
+    .name {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .date {
+      color: #ccc;
+      font-size: 12px;
+    }
+
+    .message {
+      margin-top: 12px;
+      font-size: 16px;
+      line-height: 1.5em;
+    }
+
+    .tags {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+
+      .tag {
+        font-family: monospace;
+        color: #fff;
+        background-color: rgb(228, 95, 95);
+        padding: 5px 12px;
+        border-radius: 20px;
+        margin-right: 10px;
+        margin-top: 10px;
+      }
+    }
   }
 }
