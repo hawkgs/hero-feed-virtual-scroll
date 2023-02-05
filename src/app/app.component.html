@@ -1,10 +1,10 @@
 <header>
   <h1>Hero Feed</h1>
 </header>
-<section>
-  <app-hero-message
+<section class="viewport">
+  <!-- <app-hero-message
     *ngFor="let msg of heroMsgs.messages$ | async"
     [message]="msg"
-  ></app-hero-message>
+  ></app-hero-message> -->
   <cdk-virtual-scroll-viewport itemSize="50"> </cdk-virtual-scroll-viewport>
 </section>

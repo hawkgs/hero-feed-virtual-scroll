@@ -1,10 +1,12 @@
+$headerHeight: 64px;
+
 header {
   background-color: #004d9a;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.2);
   color: #fff;
   padding: 20px;
   box-sizing: border-box;
-  height: 64px;
+  height: $headerHeight;
 
   h1 {
     font-size: 24px;
@@ -12,15 +14,18 @@ header {
   }
 }
 
-section {
+.viewport {
   position: relative;
   border: 2px solid #d56262;
   margin: 0 auto;
+  height: calc(100vh - $headerHeight);
+  box-sizing: border-box;
 }
 
-@media (min-width: 640px) {
-  section {
-    max-width: 640px;
-    margin-top: 6px;
+@media (min-width: 420px) {
+  .viewport {
+    max-width: 420px;
+    margin-top: 12px;
+    height: calc(100vh - $headerHeight - 24px);
   }
 }
