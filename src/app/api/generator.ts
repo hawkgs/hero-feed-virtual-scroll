@@ -5,6 +5,7 @@ import {
   names,
 } from 'unique-names-generator';
 import { LoremIpsum } from 'lorem-ipsum';
+import { v4 as uuid } from 'uuid';
 import { HeroMessage } from '../model/hero-message';
 
 const randomNum = (min: number, max: number) => {
@@ -22,6 +23,7 @@ export const generateMessages = (size: number): HeroMessage[] => {
   return new Array(size)
     .fill(null)
     .map(() => ({
+      id: uuid(),
       name: uniqueNamesGenerator({
         dictionaries: [adjectives, colors, names],
         length: 2,

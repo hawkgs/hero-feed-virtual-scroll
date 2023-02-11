@@ -1,6 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HeroMessage } from '../model/hero-message';
-import { heroMessageHeightPredictor } from '../virtual-scroll/hero-message-height-predictor';
 
 const expand = (char: number) => {
   const min = 65;
@@ -16,7 +15,7 @@ const expand = (char: number) => {
   templateUrl: './hero-message.component.html',
   styleUrls: ['./hero-message.component.scss'],
 })
-export class HeroMessageComponent implements OnInit {
+export class HeroMessageComponent {
   @Input() message!: HeroMessage;
 
   get initials() {
@@ -31,9 +30,5 @@ export class HeroMessageComponent implements OnInit {
     return `rgb(${expand(c.charCodeAt(0))}, ${expand(
       c.charCodeAt(1),
     )}, ${expand(c.charCodeAt(2))})`;
-  }
-
-  ngOnInit(): void {
-    console.log(heroMessageHeightPredictor(this.message));
   }
 }

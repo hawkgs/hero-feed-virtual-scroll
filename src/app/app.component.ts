@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ApiService } from './api/api.service';
 import { HeroMessagesService } from './hero-messages.service';
 
 @Component({
