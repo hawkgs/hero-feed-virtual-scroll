@@ -13,4 +13,7 @@
       [attr.data-hm-id]="msg.id"
     ></app-hero-message>
   </cdk-virtual-scroll-viewport>
+  <app-infinite-scroll
+    (endReached)="heroMsgs.loadMessages()"
+  ></app-infinite-scroll>
 </section>

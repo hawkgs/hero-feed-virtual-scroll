@@ -6,7 +6,6 @@ import { generateMessages } from './generator';
 @Injectable()
 export class ApiService {
   getHeroMessages$(pageSize: number = 10): Observable<HeroMessage[]> {
-    return of(generateMessages(pageSize))
-      .pipe(delay(1000));
+    return of(generateMessages(pageSize)).pipe(delay(250));
   }
 }
