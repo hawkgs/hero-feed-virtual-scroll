@@ -72,6 +72,11 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
     this._viewport.scrollToOffset(offset, behavior);
   }
 
+  /**
+   * Update the messages array.
+   *
+   * @param messages
+   */
   updateMessages(messages: HeroMessage[]) {
     this._messages = messages;
 
@@ -85,13 +90,26 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
    * given the size of the elements.
    */
   private _getTotalHeight(): number {
-    return this._calculateOffset(this._messages);
+    return this._measureMessagesHeight(this._messages);
   }
 
+  /**
+   * Returns the offset relative to the top of the container
+   * by a provided message index.
+   *
+   * @param idx
+   * @returns
+   */
   private _getOffsetByMsgIdx(idx: number): number {
-    return this._calculateOffset(this._messages.slice(0, idx));
+    return this._measureMessagesHeight(this._messages.slice(0, idx));
   }
 
+  /**
+   * Returns the message index by a provided offset.
+   *
+   * @param offset
+   * @returns
+   */
   private _getMsgIdxByOffset(offset: number): number {
     let accumOffset = 0;
 
@@ -108,12 +126,25 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
     return 0;
   }
 
-  private _calculateOffset(messages: HeroMessage[]): number {
+  /**
+   * Measure messages height.
+   *
+   * @param messages
+   * @returns
+   */
+  private _measureMessagesHeight(messages: HeroMessage[]): number {
     return messages
       .map((m) => this._getMsgHeight(m))
       .reduce((a, c) => a + c, 0);
   }
 
+  /**
+   * Determine the number of renderable messages
+   * withing the viewport by given message index.
+   *
+   * @param startIdx
+   * @returns
+   */
   private _determineMsgsCountInViewport(startIdx: number): number {
     if (!this._viewport) {
       return 0;
@@ -134,6 +165,11 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
     return 0;
   }
 
+  /**
+   * Update the range of rendered messages.
+   *
+   * @returns
+   */
   private _updateRenderedRange() {
     if (!this._viewport) {
       return;
@@ -163,6 +199,14 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
     this._updateHeightCache();
   }
 
+  /**
+   * Get the height of a given message.
+   * It could be either predicted or actual.
+   * Results are memoized.
+   *
+   * @param m
+   * @returns
+   */
   private _getMsgHeight(m: HeroMessage): number {
     let height = 0;
     const cachedHeight = this._heightCache.get(m.id);
@@ -177,6 +221,12 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
     return height;
   }
 
+  /**
+   * Update the height cache with the actual height
+   * of the rendered message components.
+   *
+   * @returns
+   */
   private _updateHeightCache() {
     if (!this._wrapper || !this._viewport) {
       return;
