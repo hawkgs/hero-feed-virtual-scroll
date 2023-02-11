@@ -183,6 +183,7 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
     }
 
     const nodes = this._wrapper.childNodes;
+    let cacheUpdated: boolean = false;
 
     for (let i = 0; i < nodes.length; i++) {
       const node = nodes[i] as HTMLElement;
@@ -195,9 +196,13 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
           const height = node.clientHeight;
 
           this._heightCache.set(id, { height, source: 'actual' });
-          this._viewport.setTotalContentSize(this._getTotalHeight());
+          cacheUpdated = true;
         }
       }
+    }
+
+    if (cacheUpdated) {
+      this._viewport.setTotalContentSize(this._getTotalHeight());
     }
   }
 }
