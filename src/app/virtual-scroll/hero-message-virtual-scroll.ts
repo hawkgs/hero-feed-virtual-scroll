@@ -10,7 +10,7 @@ const PaddingAbove = 5;
 const PaddingBelow = 5;
 
 interface MessageHeight {
-  height: number;
+  value: number;
   source: 'predicted' | 'actual';
 }
 
@@ -213,9 +213,9 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
 
     if (!cachedHeight) {
       height = heroMessageHeightPredictor(m);
-      this._heightCache.set(m.id, { height, source: 'predicted' });
+      this._heightCache.set(m.id, { value: height, source: 'predicted' });
     } else {
-      height = cachedHeight.height;
+      height = cachedHeight.value;
     }
 
     return height;
@@ -245,7 +245,7 @@ export class HeroMessageVirtualScrollStrategy implements VirtualScrollStrategy {
         if (!cachedHeight || cachedHeight.source !== 'actual') {
           const height = node.clientHeight;
 
-          this._heightCache.set(id, { height, source: 'actual' });
+          this._heightCache.set(id, { value: height, source: 'actual' });
           cacheUpdated = true;
         }
       }
